@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./guess.css">
+</head>
+<body>
+    <button onclick="window.location.reload()">Play Again</button>
+    <div class="div1">
+        <h1 class="h1">Guess The Number</h1>
+    </div>
+    <hr class="hr">
+    <div class="div2">
+        <p id="guess">?</p>
+    </div>
+    <div class="div3">
+        <div class="div4">
+            <input type="number" id="num">
+            <button id="but">Submit</button>
+        </div>
+        <div class="div5">
+            <h3 id="result" class="text"> Result </h3>
+            <p id="chance" class="text"> Chance </p> 
+            <p id="score" class="text"></p>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    let x  = parseInt(Math.random()*50)
+    console.log(x)
+    let chance = 100
+    y = document.getElementById("chance")
+    y.value = chance 
+    y.innerHTML = "Chance:- " + y.value
+    console.log(y.value);
+    let score = 0
+    z = document.getElementById("score")
+    z.value = score
+    z.innerText = "HighScore:- " + z.value
+    a = document.getElementById("guess")
+    document.querySelector("#but").addEventListener("click",submit)
+    function submit(){
+        let val = document.querySelector("#num").value;
+        console.log(val)
+        if(val<x){
+            document.querySelector("#result").innerHTML=" Result :- Too Low"
+            y.value = y.value-1
+            y.innerText = "Chance:- " + y.value
+        }
+        else if (val>x){
+            document.querySelector("#result").innerHTML=" Result :- Too High"
+            y.value = y.value-1
+            y.innerText = "Chance:- " + y.value
+        }
+        else{
+            document.querySelector("#result").innerHTML=" Result :- Correct"
+            z.innerText = "HghScore :- " + y.value
+            document.body.style.backgroundColor = "green"
+            a.innerText = x
+        }
+    }
+</script>
